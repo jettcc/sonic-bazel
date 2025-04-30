@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "run_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/MoeGolibrary/moego/run",
+    visibility = ["//visibility:private"],
+    deps = ["@com_github_bytedance_sonic//:sonic"],
+)
+
+go_binary(
+    name = "run",
+    embed = [":run_lib"],
+    visibility = ["//visibility:public"],
+)
